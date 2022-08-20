@@ -2,8 +2,14 @@ import React from "react";
 
 import { client } from "../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
+import { IProduct, Banner } from "../types";
 
-const Home = ({ products, bannerData }) => {
+interface IProps {
+  products: IProduct[];
+  bannerData: Banner[];
+}
+
+const Home = ({ products, bannerData }: IProps) => {
   return (
     <>
       <HeroBanner />
