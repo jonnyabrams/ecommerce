@@ -11,17 +11,17 @@ interface IProps {
 
 const Home = ({ products, bannerData }: IProps) => {
   return (
-    <>
-      <HeroBanner />
+    <div>
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Speakers of many different types</p>
       </div>
       <div className="products-container">
-        {["Product 1", "Product 2"].map((product) => product)}
+        {products?.map((product: IProduct) => product.name)}
       </div>
       <FooterBanner />
-    </>
+    </div>
   );
 };
 
