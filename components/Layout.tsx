@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactElement<any, any>;
 };
 
-const Layout = ({children, ...LayoutProps}: LayoutProps) => {
+const Layout = ({ children, ...LayoutProps }: LayoutProps) => {
   return (
     <div className="layout">
       <Head>
