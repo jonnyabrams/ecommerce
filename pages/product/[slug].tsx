@@ -5,6 +5,7 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
+import Recommendations from "../../components/Recommendations";
 
 import { client, urlFor } from "../../lib/client";
 import { IProduct } from "../../types";
@@ -75,6 +76,7 @@ const ProductDetails = ({ product, products }: Props) => {
           </div>
         </div>
       </div>
+      <Recommendations products={products} />
     </div>
   );
 };
