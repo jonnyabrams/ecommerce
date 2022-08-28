@@ -1,7 +1,10 @@
 export interface IProduct {
+  _id: string;
   image: string[];
   name: string;
-  slug: string;
+  slug: {
+    current: string;
+  };
   price: number;
   details: string;
 }

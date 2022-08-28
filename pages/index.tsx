@@ -18,7 +18,7 @@ const Home = ({ products, bannerData }: IProps) => {
         <p>Speakers of many different types</p>
       </div>
       <div className="products-container">
-        {products?.map((product: IProduct) => product.name)}
+        {products?.map((product: IProduct) => <Product key={product._id} product={product} />)}
       </div>
       <FooterBanner />
     </div>
