@@ -1,8 +1,13 @@
 import Link from "next/link";
 
 import { urlFor } from "../lib/client";
+import { Banner } from "../types";
 
-const HeroBanner = ({ heroBanner }) => {
+interface Props {
+  heroBanner: Banner
+}
+
+const HeroBanner = ({ heroBanner }: Props) => {
   return (
     <div className="hero-banner-container">
       <div>
