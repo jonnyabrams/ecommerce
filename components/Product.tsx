@@ -21,7 +21,7 @@ const Product = ({ product }: Props) => {
             alt="Product image"
           />
           <p className="product-name">{product.name}</p>
-          <p className="product-price">${product.price}</p>
+          <p className="product-price">£{product.price}</p>
         </div>
       </Link>
     </div>
