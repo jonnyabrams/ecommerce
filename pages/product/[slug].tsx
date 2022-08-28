@@ -5,8 +5,9 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
-import Recommendations from "../../components/Recommendations";
+import { useState } from "react";
 
+import Recommendations from "../../components/Recommendations";
 import { client, urlFor } from "../../lib/client";
 import { IProduct } from "../../types";
 
@@ -17,24 +18,27 @@ interface Props {
 
 const ProductDetails = ({ product, products }: Props) => {
   const { image, name, details, price } = product;
+  const [index, setIndex] = useState(0)
+
+  console.log(image)
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(image && image[0])} alt="" />
+            <img src={urlFor(image && image[index])} className="product-detail-image" alt="" />
           </div>
-          {/* <div className="small-images-container">
-            {image?.map((item, index) => (
+          <div className="small-images-container">
+            {image?.map((item, i) => (
               <img
                 src={urlFor(item)}
-                className=""
-                onMouseEnter={() => {}}
-                key={`image-${index}`}
+                className={i === index ? 'small-image selected-image' : 'small-image' }
+                onMouseEnter={() => setIndex(i)}
+                key={`image-${i}`}
               />
             ))}
-          </div> */}
+          </div>
         </div>
 
         <div className="product-detail-desc">
