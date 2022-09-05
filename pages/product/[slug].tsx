@@ -10,6 +10,7 @@ import { useState } from "react";
 import Recommendations from "../../components/Recommendations";
 import { client, urlFor } from "../../lib/client";
 import { IProduct } from "../../types";
+import { useStateContext } from "../../context/StateContext";
 
 interface Props {
   product: IProduct;
@@ -18,20 +19,27 @@ interface Props {
 
 const ProductDetails = ({ product, products }: Props) => {
   const { image, name, details, price } = product;
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
+  const { decreaseQty, increaseQty, qty } = useStateContext();
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(image && image[index])} className="product-detail-image" alt="" />
+            <img
+              src={urlFor(image && image[index])}
+              className="product-detail-image"
+              alt=""
+            />
           </div>
           <div className="small-images-container">
             {image?.map((item, i) => (
               <img
                 src={urlFor(item)}
-                className={i === index ? 'small-image selected-image' : 'small-image' }
+                className={
+                  i === index ? "small-image selected-image" : "small-image"
+                }
                 onMouseEnter={() => setIndex(i)}
                 key={`image-${i}`}
               />
@@ -57,13 +65,13 @@ const ProductDetails = ({ product, products }: Props) => {
           <div className="quantity">
             <h3>Quantity:</h3>
             <p className="quantity-desc">
-              <span className="minus" onClick={() => {}}>
+              <span className="minus" onClick={decreaseQty}>
                 <AiOutlineMinus />
               </span>
               <span className="num" onClick={() => {}}>
-                0
+                {qty}
               </span>
-              <span className="plus" onClick={() => {}}>
+              <span className="plus" onClick={increaseQty}>
                 <AiOutlinePlus />
               </span>
             </p>
