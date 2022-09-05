@@ -5,14 +5,14 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 type LayoutProps = {
-  children: ReactElement<any, any>;
+  children: ReactElement|ReactElement[];
 };
 
 const Layout = ({ children, ...LayoutProps }: LayoutProps) => {
   return (
     <div className="layout">
       <Head>
-        <title>Get Your Gadgets</title>
+        <title>Getcha Gadgets</title>
       </Head>
       <header>
         <Navbar />
