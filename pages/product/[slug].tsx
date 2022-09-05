@@ -20,7 +20,7 @@ interface Props {
 const ProductDetails = ({ product, products }: Props) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
-  const { decreaseQty, increaseQty, qty } = useStateContext();
+  const { decreaseQty, increaseQty, qty, onAdd } = useStateContext();
 
   return (
     <div>
@@ -77,7 +77,7 @@ const ProductDetails = ({ product, products }: Props) => {
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick={() => {}}>
+            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>
               Add to cart
             </button>
             <button type="button" className="buy-now" onClick={() => {}}>
