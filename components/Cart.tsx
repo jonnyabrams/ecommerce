@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
+import { IProduct } from "../types";
 
 const Cart = () => {
   const cartRef = useRef();
@@ -45,6 +46,57 @@ const Cart = () => {
             </Link>
           </div>
         )}
+
+        <div className="product-container">
+          {cartItems.length >= 1 &&
+            cartItems.map((item: IProduct, index: number) => (
+              <div className="product" key={item._id}>
+                <img
+                  src={urlFor(item?.image[0])}
+                  className="cart-product-image"
+                />
+                <div className="item-desc">
+                  <div className="flex top">
+                    <h5>{item.name}</h5>
+                    <h4>${item.price}</h4>
+                  </div>
+                  <div className="flex bottom">
+                    <div>
+                      <p className="quantity-desc">
+                        <span className="minus" onClick={() => {}}>
+                          <AiOutlineMinus />
+                        </span>
+                        <span className="num" onClick={() => {}}>
+                          {0}
+                        </span>
+                        <span className="plus" onClick={() => {}}>
+                          <AiOutlinePlus />
+                        </span>
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="remove-item"
+                      onClick={() => {}}
+                    >
+                      <TiDeleteOutline />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+        {cartItems.length >= 1 && <div className="cart=bottom">
+          <div className="total">
+            <h3>Subtotal:</h3>
+            <h3>${totalPrice}</h3>
+          </div>
+          <div className="btn-container">
+            <button type="button" className="btn" onClick={() => {}}>
+              Pay with Stripe
+            </button>
+          </div>
+        </div>}
       </div>
     </div>
   );
