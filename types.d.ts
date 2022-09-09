@@ -7,6 +7,7 @@ export interface IProduct {
   };
   price: number;
   details: string;
+  quantity: number;
 }
 
 export interface Banner {
